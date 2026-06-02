@@ -36,8 +36,22 @@ opt.cmdheight = 1
 opt.splitright = true
 opt.splitbelow = true
 
--- Clipboard
-opt.clipboard = "unnamedplus"
+-- Clipboard (OSC 52 works over SSH/mosh without xclip/pbcopy)
+if os.getenv("SSH_TTY") or os.getenv("SSH_CLIENT") then
+  vim.g.clipboard = {
+    name = "OSC 52",
+    copy = {
+      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+    },
+    paste = {
+      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+    },
+  }
+else
+  opt.clipboard = "unnamedplus"
+end
 
 -- Backspace
 opt.backspace = "indent,eol,start"
