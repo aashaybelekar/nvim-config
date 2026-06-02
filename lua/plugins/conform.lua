@@ -1,6 +1,6 @@
 require("conform").setup({
   formatters_by_ft = {
-    python     = { "black", "isort" },
+    python     = { "ruff_format", "ruff_organize_imports" },
     lua        = { "stylua" },
     json       = { "prettierd", "prettier" },
     yaml       = { "prettierd", "prettier" },
@@ -14,12 +14,5 @@ require("conform").setup({
     timeout_ms = 3000,
     lsp_fallback = true,
   },
-  formatters = {
-    black = {
-      prepend_args = { "--line-length", "88" },
-    },
-    isort = {
-      prepend_args = { "--profile", "black" },
-    },
-  },
+  formatters = {},
 })
