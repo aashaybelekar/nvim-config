@@ -50,6 +50,14 @@ for lhs, query in pairs(select_maps) do
 	end)
 end
 
+-- Compatibility shim: restore ft_to_lang for telescope and other plugins using old API
+local ok, parsers = pcall(require, "nvim-treesitter.parsers")
+if ok and not parsers.ft_to_lang then
+  parsers.ft_to_lang = function(ft)
+    return vim.treesitter.language.get_lang(ft) or ft
+  end
+end
+
 -- Textobjects: move
 local ts_move = require("nvim-treesitter-textobjects.move")
 vim.keymap.set("n", "]f", function()
