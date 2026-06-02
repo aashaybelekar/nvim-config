@@ -1,3 +1,6 @@
+-- Force gcc since tree-sitter CLI may not be available on remote servers
+require("nvim-treesitter").setup({ prefer_git = false, compilers = { "gcc", "cc" } })
+
 -- Install parsers (no-op if already installed)
 require("nvim-treesitter").install({
 	"python",
