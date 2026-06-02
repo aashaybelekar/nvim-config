@@ -26,6 +26,7 @@ telescope.setup({
     },
     sorting_strategy = "ascending",
     layout_strategy  = "horizontal",
+    preview = { treesitter = false },
   },
   pickers = {
     find_files = { hidden = true },
