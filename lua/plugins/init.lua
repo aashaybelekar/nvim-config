@@ -100,12 +100,11 @@ require("lazy").setup({
   {
     "nvim-treesitter/nvim-treesitter",
     build = ":TSUpdate",
-    event = { "BufReadPost", "BufNewFile" },
+    lazy = false,
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
     },
-    main = "nvim-treesitter.configs",
-    opts = require("plugins.treesitter"),
+    config = function() require("plugins.treesitter") end,
   },
 
   -- ── LSP ───────────────────────────────────────────────────────────────────
