@@ -245,6 +245,17 @@ require("lazy").setup({
     end,
   },
 
+  -- ── Markdown preview ─────────────────────────────────────────────────────
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    build = "cd app && npm install",
+    ft = { "markdown" },
+    keys = {
+      { "<leader>mp", "<cmd>MarkdownPreviewToggle<cr>", desc = "Toggle markdown preview" },
+    },
+  },
+
   -- ── Dashboard ─────────────────────────────────────────────────────────────
   {
     "nvimdev/dashboard-nvim",
