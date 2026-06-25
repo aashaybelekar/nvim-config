@@ -48,7 +48,7 @@ map("n", "gi", vim.lsp.buf.implementation, { desc = "Go to implementation" })
 map("n", "gh", vim.lsp.buf.hover, { desc = "Hover docs" })
 map("n", "[d", vim.diagnostic.goto_prev, { desc = "Prev diagnostic" })
 map("n", "]d", vim.diagnostic.goto_next, { desc = "Next diagnostic" })
-map("n", "<leader>d", vim.diagnostic.open_float, { desc = "Show diagnostic" })
+map("n", "<leader>d", function() vim.diagnostic.open_float(nil, { scope = "line" }) end, { desc = "Show diagnostic float" })
 
 -- ── Formatting ────────────────────────────────────────────────────────────
 map({ "n", "v" }, "<leader>f", function()

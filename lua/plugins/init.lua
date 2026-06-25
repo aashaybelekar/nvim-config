@@ -234,14 +234,13 @@ require("lazy").setup({
   {
     "folke/trouble.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
-    cmd = { "TroubleToggle", "Trouble" },
+    cmd = { "Trouble" },
     keys = {
-      { "<leader>xx", "<cmd>TroubleToggle<cr>", desc = "Toggle trouble" },
-      { "<leader>xw", "<cmd>TroubleToggle workspace_diagnostics<cr>", desc = "Workspace diagnostics" },
-      { "<leader>xd", "<cmd>TroubleToggle document_diagnostics<cr>", desc = "Document diagnostics" },
+      { "<leader>D",  "<cmd>Trouble diagnostics toggle filter.buf=0<cr>", desc = "File diagnostics (Trouble)" },
+      { "<leader>Dw", "<cmd>Trouble diagnostics toggle<cr>",              desc = "Workspace diagnostics (Trouble)" },
     },
     config = function()
-      require("trouble").setup({ use_diagnostic_signs = true })
+      require("trouble").setup({})
     end,
   },
 

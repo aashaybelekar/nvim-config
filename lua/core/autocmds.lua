@@ -51,6 +51,7 @@ autocmd("VimResized", {
   end,
 })
 
+
 -- Restore cursor position when reopening file
 autocmd("BufReadPost", {
   group = augroup("RestoreCursor", { clear = true }),

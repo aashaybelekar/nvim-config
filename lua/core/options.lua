@@ -21,6 +21,7 @@ opt.hlsearch = true
 opt.incsearch = true
 
 -- Cursor & scrolling
+opt.guicursor = ""
 opt.scrolloff = 8
 opt.sidescrolloff = 8
 opt.cursorline = true
@@ -38,19 +39,18 @@ opt.splitbelow = true
 
 -- Clipboard (OSC 52 works over SSH/mosh without xclip/pbcopy)
 if os.getenv("SSH_TTY") or os.getenv("SSH_CLIENT") then
-  vim.g.clipboard = {
-    name = "OSC 52",
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").copy("*"),
-    },
-    paste = {
-      ["+"] = require("vim.ui.clipboard.osc52").paste("+"),
-      ["*"] = require("vim.ui.clipboard.osc52").paste("*"),
-    },
-  }
-else
-  opt.clipboard = "unnamedplus"
+	vim.g.clipboard = {
+		name = "OSC 52",
+		copy = {
+			["+"] = require("vim.ui.clipboard.osc52").copy("+"),
+			["*"] = require("vim.ui.clipboard.osc52").copy("*"),
+		},
+		paste = {
+			["+"] = require("vim.ui.clipboard.osc52").paste("+"),
+			["*"] = require("vim.ui.clipboard.osc52").paste("*"),
+		},
+	}
+	opt.clipboard = "unnamedplus"
 end
 
 -- Backspace
